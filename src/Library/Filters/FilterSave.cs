@@ -21,7 +21,7 @@ namespace CompAndDel.Filters
         public IPicture Filter(IPicture image)
         {
             IPicture result = image.Clone();
-            new PictureProvider().SavePicture(result, $"{this.Name}.jpg");
+            new PictureProvider().SavePicture(result, this.Name);
             return result;
         }
     }

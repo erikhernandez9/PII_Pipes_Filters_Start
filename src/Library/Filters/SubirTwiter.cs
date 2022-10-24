@@ -24,7 +24,7 @@ namespace CompAndDel.Filters
         public IPicture Filter(IPicture image)
         {
             var twitter = new TwitterImage();
-            Console.WriteLine(twitter.PublishToTwitter(this.Text, $"../Program/{this.Image}.jpg"));
+            Console.WriteLine(twitter.PublishToTwitter(this.Text, this.Image));
             return image;
         }
     }
