@@ -23,12 +23,12 @@ namespace CompAndDel
 
             PipeNull pipeNull = new PipeNull();
             PipeSerial pipeSerial = new PipeSerial(filterSave3, pipeNull);
-            pipeSerial = new PipeSerial(filterConditional, pipeSerial);
+            PipeConditionalFork pipeConditionalFork = new PipeConditionalFork(filterConditional, @"Grey.jpg", pipeSerial);
             // Esta parte esta comentada porque sino, no se puede detectar la cara
             /*pipeSerial = new PipeSerial(subir, pipeSerial);
             pipeSerial = new PipeSerial(filterSave, pipeSerial);
             pipeSerial = new PipeSerial(filterNegative, pipeSerial);*/
-            pipeSerial = new PipeSerial(subir2, pipeSerial);
+            pipeSerial = new PipeSerial(subir2, pipeConditionalFork);
             pipeSerial = new PipeSerial(filterSave2, pipeSerial);
             pipeSerial = new PipeSerial(filterGreyscale, pipeSerial);
             picture = pipeSerial.Send(picture);

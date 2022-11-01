@@ -25,23 +25,10 @@ namespace CompAndDel.Filters
             PipeSerial pipe;
             PipeNull pipeNull = new PipeNull();
             IPicture result = image.Clone();
-            
             CognitiveFace cog = new CognitiveFace(true, Color.Black);
+
             cog.Recognize(this.Path);
             this.Face = cog.FaceFound;
-
-            if (cog.FaceFound == true) 
-            {
-                SubirTwiter subir = new SubirTwiter(this.Path, "Tiene cara");
-                pipe = new PipeSerial(subir, pipeNull);
-                pipe.Send(result);
-            }
-            else
-            {
-                FilterNegative negativo = new FilterNegative();
-                pipe = new PipeSerial(negativo, pipeNull);
-                result = pipe.Send(result);
-            }
             return result;
         }
     }
